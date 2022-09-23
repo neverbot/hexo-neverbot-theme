@@ -1,0 +1,29 @@
+.tag-title
+  font-family: $basic-font-family
+  font-size: 1.2em;
+  line-height: 1.5em;
+  text-decoration: underline;
+  font-weight: bold;
+
+.tag-cloud-tags 
+  margin: 10px 0
+  padding-top 2em
+  a 
+    display: inline-block
+    position: relative
+    margin: 5px 10px
+    word-wrap: break-word
+    transition-duration: .3s
+    transition-property: transform
+    transition-timing-function: ease-out
+    &:active,
+    &:focus,
+    &:hover 
+      color: $global-link-hover-color
+      transform: scale(1.1)
+    small
+      margin 0 .3em
+      color: $font-secondary-color
+      
+    
+  

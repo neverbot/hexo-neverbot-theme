@@ -1,0 +1,10 @@
+<div class="front-archive">
+    <div class="front-archive-title"><%- __('home.last-posts') %></div>
+    <% site.posts.sort('date', -1).limit(10).each(function (post) { %>
+        <article class="front-archive-item">
+            <a class="front-archive-item-link" href="<%- url_for(post.path) %>">
+                <%= post.title %></a>
+            <span class="front-archive-item-date"><%- date(post.date, 'MMM D') %></span>
+        </article>
+    <% }) %>
+</div>

@@ -1,0 +1,39 @@
+.front-archive
+  position relative
+  width 100%
+  max-width 780px
+  margin 0 auto
+
+.front-archive-title
+  font-size 1.8em
+  line-height 1.5em
+  text-align: center
+  margin-bottom: 20px
+  
+.front-archive-item
+  border-bottom 1px grey dashed
+  height: 50px
+  line-height: 51px
+
+.front-archive-item-link
+    display inline-block
+    text-decoration none
+    overflow hidden
+    //text-overflow ellipsis
+    white-space nowrap
+    &:hover
+      color $global-link-hover-color
+      background-color transparent
+    
+  .front-archive-item-date
+    float right
+    text-align right
+    color $font-secondary-color
+
+
+/* mobile phone and smart portable devices */
+@media screen and (max-width: 479px) 
+  .front-archive-item-link
+    white-space normal
+  .front-archive-item-date
+    display none

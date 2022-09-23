@@ -1,0 +1,27 @@
+<section class="post-footer">
+  <div>
+    <% if (post.tags.length !== 0) { %>
+    <span>Etiquetado como:</span>
+    <% post.tags.forEach((item, i) => { %>
+      <span class="tag" title="Ver más contenido relacionado">
+      <a href="<%- url_for(item.path) %>">#<%- item.name %></a></span><%- (i < post.tags.length - 1) ? ',' : '' %>
+    <% }) %>
+    | <span class="permalink" title="Permalink"><a href="<%- post.permalink %>">#</a></span>
+    <% } %>
+  </div>
+</section>
+
+<%# video %>
+<% if (is_post() && page.video) { %>
+<script>
+  const player = new Plyr('#player', {
+    disableContextMenu: 0,
+    youtube: {
+      noCookie: 1,
+      modestbranding: 1,
+      showinfo: 0,
+      controls: 0,
+    }
+  });
+</script>
+<% } %>

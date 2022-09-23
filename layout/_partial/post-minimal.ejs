@@ -1,0 +1,5 @@
+<article class="post-minimal">
+  <a class="post-title" href="<%- url_for(post.path) %>">
+      <%= post.title %></a>
+  <span class="post-date"><%- date(post.date, theme.date_format) %></span>
+</article>

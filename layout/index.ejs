@@ -1,0 +1,4 @@
+<% if (url_for(page.path) == '/index.html'){ %>     
+  <%- partial('_partial/home') %>
+<% } %>
+<%- partial('_page/archive', { index: true }) %>

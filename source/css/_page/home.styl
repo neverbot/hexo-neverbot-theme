@@ -1,0 +1,213 @@
+
+.home
+  margin: 0 auto 3em auto;
+  
+  #nav
+    text-align: center;
+    height: 3.5em;
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+    
+    a
+      width: 80px;
+      opacity: 0.35;
+      outline: 0;
+      -moz-transition: opacity .25s ease-in-out;
+      -webkit-transition: opacity .25s ease-in-out;
+      -ms-transition: opacity .25s ease-in-out;
+      transition: opacity .25s ease-in-out;
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      cursor: default;
+
+      &:before 
+        font-size: 0.8em;
+
+      &:hover 
+        opacity: 0.8;
+        bottom: -1px;
+
+        span 
+          opacity: 0.9;   
+
+      &.active 
+        opacity: 0.8;
+
+      &.active:after 
+        border-bottom-width: 10px;
+
+      span 
+        display: inline-block;
+        position: absolute;
+        background: $font-color;
+        color: #ffffff;
+        top: -2.5em;
+        left: -10px;
+        opacity: 0;
+        -moz-transition: opacity .25s ease-in-out;
+        -webkit-transition: opacity .25s ease-in-out;
+        -ms-transition: opacity .25s ease-in-out;
+        transition: opacity .25s ease-in-out;
+        width: 100px;
+        border-radius: 9px;
+        font-size: 0.5em;
+        font-family: source-sans-pro
+        padding: 5px 0;
+
+        &:after 
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: -0.4em;
+          left: 50%;
+          margin-left: -0.6em;
+          border-top: solid 0.6em $font-color;
+          border-left: solid 0.6em transparent;
+          border-right: solid 0.6em transparent;
+
+      &.icon 
+        position: relative;
+        text-decoration: none;
+        font-size: 2em;
+
+        &:before 
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Font Awesome 5 Free';
+          font-style: normal;
+          font-weight: normal;
+          text-transform: none !important;
+        
+        & > .label 
+          display: none;
+
+    .line 
+      display: none;
+    
+  #main 
+    border-radius: 9px;
+    border: 1px $font-secondary-color solid;
+    height: 13em;
+    background: #ffffff;
+  
+    .panel 
+      padding: 1em;
+      width: 100%;
+      height: 100%;    
+      -moz-transition: visibility 0s linear 0.5s;
+      -webkit-transition: visibility 0s linear 0.5s;
+      -ms-transition: visibility 0s linear 0.5s;
+      transition: visibility 0s linear 0.5s;
+    
+      .text
+        padding: 0 4em;
+
+        p 
+          font-family: $basic-font-family
+          color: $font-secondary-color
+          font-size: 1.1em;
+          line-height: 1.5em;
+          margin: 0;
+          text-align: justify;
+
+        strong, b, h1, h2, h3, h4, h5, h6 
+          font-weight: 400;
+          color: #363636;
+        
+        h1
+          font-family: indie-flower
+          font-size: 2em;
+          text-align: center
+          margin: 17px 0 0 0;
+
+        h2 
+          font-size: 1.8em;
+        
+        h3, h4, h5, h6 
+          font-size: 1.25em;
+  
+    #initial 
+      .text 
+        width: 100%;
+        text-align: center;
+        padding: 0 20%;
+
+        p 
+          text-align: unset;
+        
+        h1 
+          margin: 40px 0 0 0;
+          font-size: 2.4em;
+          font-family: indie-flower      
+          margin-bottom: 0;
+      
+        .typed-cursor 
+          position: relative;
+          top: -0.05em;
+          opacity: 1;
+          -webkit-animation: blink 0.7s infinite;
+          -moz-animation: blink 0.7s infinite;
+          animation: blink 0.7s infinite;
+        
+          @keyframes blink {
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+          }
+          @-webkit-keyframes blink {
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+          }
+          @-moz-keyframes blink {
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+          }
+
+@media (max-width: 650px) 
+  .home 
+    width: 90%;
+    padding-top: 1em;
+
+    #nav 
+      height: 6.5em;
+    
+      a span 
+        display: none;
+      
+      .line 
+        display: initial;
+        flex-basis: 100%;
+      
+    .panel 
+      padding: 0.6em 1.4em;
+    
+
+    .text 
+      float: initial;
+      padding: 10px 10px 0 10px;
+      width: 100%;
+      padding-top: 10px;
+      padding-bottom: 20px;
+    
+      & > header 
+        text-align: center;
+      
+      p 
+        margin: 0;
+      
+    .photo-wrapper 
+      float: initial;
+      width: 100%;
+      height: 250px;
+      margin: 0 auto;
+      position: relative;
+
+    h1 
+      margin: 10px 0 20px 0;
+      font-size: 1.8em;
+  

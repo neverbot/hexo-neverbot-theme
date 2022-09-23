@@ -1,0 +1,16 @@
+{
+  "name": "hexo-theme-neverbot",
+  "version": "1.0.0",
+  "description": "neverbot hexo theme",
+  "keywords": [
+    "hexo",
+    "theme",
+    "hexo-theme"
+  ],
+  "author": "neverbot",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "devDependencies": {}
+}

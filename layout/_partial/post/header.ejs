@@ -1,0 +1,8 @@
+<a class="post-title" href="<%- url_for(post.path) %>"><%= post.title %></a>
+<div class="post-meta">
+  Publicado por <%= post.author ? post.author : 'alguien' %>, el
+  <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, theme.date_format) %></time>
+  <% if (theme.show_updated && post.date !== post.updated) { %>
+  (modificado: <time datetime="<%= date_xml(post.updated) %>" itemprop="dateModified"><%= date(post.updated, theme.date_format) %></time>)
+  <% } %>
+</div>

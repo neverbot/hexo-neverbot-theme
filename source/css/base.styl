@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+html
+  background-color: $background-color;
+
+body
+  margin: 0px;
+  padding: 0px;
+
+  text-rendering: geometricPrecision;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+a
+  color $global-link-color
+  text-decoration none
+  transition color 0.2s ease, border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease
+  cursor pointer
+
+  &:hover
+    color $global-link-hover-color
+    text-decoration none
+    transition color 0.2s ease, border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease

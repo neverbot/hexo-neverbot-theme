@@ -1,0 +1,15 @@
+<%# toc %>
+<% if (theme.toc.post_enable && toc(post.content).length !== 0) { %>
+    <%- partial('_partial/post/toc') %>
+<% } %>
+
+<%- partial('_partial/post') %>
+
+<section class="post-nav">
+    <% if (post.prev) { %>
+        <a class="prev" rel="prev" href="<%- url_for(post.prev.path)%>"><%- post.prev.title %></a>
+    <% } %>
+    <% if (post.next) { %>
+        <a class="next" rel="next" href="<%- url_for(post.next.path)%>"><%- post.next.title %></a>
+    <% } %>
+</section>
