@@ -61,10 +61,10 @@ if (is_archive()) {
 <% } %>
 
 <%# video %>
-<% if (is_post() && page.video) { %>
+<%# if (is_post() && page.video) { %>
 <script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
 <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" />
-<% } %>
+<%# } %>
 
 <%# jquery only in home %>
 <% if (url_for(page.path) == '/index.html'){ %>     
