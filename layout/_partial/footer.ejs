@@ -4,3 +4,18 @@
         <pre>4 8 15 16 23 42</pre>
     </div>
 </footer>
+
+<%# video %>
+<%# if (is_post() && page.video) { %>
+<script>
+  const player = new Plyr('#player', {
+    disableContextMenu: 0,
+    youtube: {
+      noCookie: 1,
+      modestbranding: 1,
+      showinfo: 0,
+      controls: 0,
+    }
+  });
+</script>
+<%# } %>
