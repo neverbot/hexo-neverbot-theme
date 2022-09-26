@@ -136,10 +136,24 @@
     cursor zoom-in
 
   blockquote
-    background: url('/images/quotes.gif') no-repeat top left;
-    border: none;
+    // background: url('/images/quotes.gif') no-repeat top left;
+    // border: none;
     padding 1em 1.2em 1em 1.2em
     font-style: italic;
+    position: relative
+    
+  blockquote:after
+    content: '\201D';
+    font-size: 9em;
+    font-family: $basic-font-family
+    color: $global-link-hover-color;
+    font-weight: bold;
+    opacity: 0.3;
+    z-index: -1;
+    position: absolute;
+    left: -30px;
+    top: 65px;
+    transform: rotate(-17deg);
 
     // font-size 1rem
     // display block
@@ -149,7 +163,7 @@
     // color rgba(#34495e, 0.8)
     // background-color $post-blockquote-background-color
     // border-left 2px solid $post-blockquote-border-color
-    //box-shadow 1px 1px 2px rgba(0,0,0,0.125)
+    // box-shadow 1px 1px 2px rgba(0,0,0,0.125)
     p
       margin 0
     footer
