@@ -129,9 +129,12 @@
     margin: 30px auto;
     border-radius: 9px;
     overflow hidden
+    // for zoom
+    transition: transform .5s ease;
 
-  img[data-action="zoom"]
-    cursor zoom-in
+  // zoom
+  img:hover 
+    transform: scale(1.05);
 
   blockquote
     // background: url('/images/quotes.gif') no-repeat top left;
