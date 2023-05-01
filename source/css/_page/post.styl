@@ -17,7 +17,7 @@
     display: block;
     position: absolute;
     left: -70px;
-    opacity: 0.2;
+    opacity: 0.3;
     
   .post-meta, .post-footer
     font-size 1em
@@ -35,7 +35,7 @@
   // padding-top 2rem
   font-size 1.1em
   line-height: 1.5em;
-  text-align justify
+  // text-align justify
   margin-bottom: 1em;
 
   overflow-wrap: break-word;
@@ -54,8 +54,8 @@
   h4,
   h5,
   h6
-    font-size 1em
-    margin-top 1em
+    font-size 1.1em
+    margin-top 2em
     margin-bottom 1em
     // padding-top .8em
     // padding-bottom .3em
@@ -67,8 +67,6 @@
     content "#"
     margin-right 5px
     color $post-link-color
-  h3
-    font-size 1em
   h3::before
     content "|"
     margin-right 5px
@@ -77,8 +75,6 @@
     content "*"
     margin-right 5px
     color $post-link-color
-  h5
-    font-size 1em
 
   a
     position: relative;
@@ -86,7 +82,7 @@
   a:hover
     color $post-link-hover-color
 
-  a::before
+  a:not(.right):not(.left)::before
     content: "";
     position: absolute;
     left: 0.2em;
@@ -96,7 +92,7 @@
     transform: skew(-12deg) translateX(-3px) rotate(-2deg);
     background: #f69;
     z-index: -1;
-    opacity: 0.2;
+    opacity: 0.4;
 
   a:hover::before
     background: none
@@ -133,15 +129,32 @@
     margin: 30px auto;
     border-radius: 9px;
     overflow hidden
+    // for zoom
+    transition: transform .5s ease;
 
-  img[data-action="zoom"]
-    cursor zoom-in
+  // zoom
+  img:hover 
+    transform: scale(1.05);
 
   blockquote
-    background: url('/images/quotes.gif') no-repeat top left;
-    border: none;
+    // background: url('/images/quotes.gif') no-repeat top left;
+    // border: none;
     padding 1em 1.2em 1em 1.2em
     font-style: italic;
+    position: relative
+    
+  blockquote:after
+    content: '\201D';
+    font-size: 9em;
+    font-family: $basic-font-family
+    color: $global-link-hover-color;
+    font-weight: bold;
+    opacity: 0.3;
+    z-index: -1;
+    position: absolute;
+    left: -30px;
+    top: 65px;
+    transform: rotate(-17deg);
 
     // font-size 1rem
     // display block
@@ -151,7 +164,7 @@
     // color rgba(#34495e, 0.8)
     // background-color $post-blockquote-background-color
     // border-left 2px solid $post-blockquote-border-color
-    //box-shadow 1px 1px 2px rgba(0,0,0,0.125)
+    // box-shadow 1px 1px 2px rgba(0,0,0,0.125)
     p
       margin 0
     footer
@@ -182,7 +195,6 @@
     margin 0 auto
     overflow hidden
     
-.post-content
   code, pre
     line-height 1.7em
     padding 7px
@@ -194,6 +206,9 @@
     border-radius 4px
     color $code-font-color
     background $code-background-color
+
+  iframe
+    margin 0 auto !important
 
   figure.highlight
     margin 1em 0
@@ -230,6 +245,20 @@
       color #d0d0d0
       pre
         margin 0
+
+  .left
+    float left
+    margin-right 25px
+
+  .right
+    float right
+    margin-left 25px
+
+  .textright
+    text-align right
+  
+  .center
+    text-align center
 
 .post-nav 
   font-family: $basic-font-family
