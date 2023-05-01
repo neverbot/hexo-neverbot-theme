@@ -76,27 +76,14 @@
     margin-right 5px
     color $post-link-color
 
-  a
-    position: relative;
-
   a:hover
     color $post-link-hover-color
 
-  a:not(.right):not(.left)::before
-    content: "";
-    position: absolute;
-    left: 0.2em;
-    top: 0.2em;
-    width: 100%;
-    height: 1em;
-    transform: skew(-12deg) translateX(-3px) rotate(-2deg);
-    background: #f69;
-    z-index: -1;
-    opacity: 0.4;
-
-  a:hover::before
-    background: none
-    transform: none
+  a
+    // brush used from svgbox project, copied to local so we do not depend
+    // of third-party cdns
+    // background: url(//s2.svgbox.net/pen-brushes.svg?ic=brush-9&color=$post-link-hover-color-back);
+    background: url("/images/pen-brushes.svg")
 
   ul
     padding-left 2em
