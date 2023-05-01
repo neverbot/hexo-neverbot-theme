@@ -1,14 +1,3 @@
 <header class="header">
-    <nav class="navbar">
-        <div class="container">
-            <div class="menu navbar-right">
-                <% for (var i in theme.nav){ %>
-                    <a class="menu-item" href="<%- url_for(theme.nav[i].url) %>"><%= __(theme.nav[i].name) %></a>
-                <% } %>
-            </div>
-
-        </div>
-    </nav>
-    
-    <a href="/" class="header-title"><%= theme.header.title %></a>
+  <a href="/" class="header-title"><%= theme.header.title %></a>
 </header>
