@@ -74,6 +74,13 @@ if (is_archive()) {
 <script type="text/javascript" src="js/home.js"></script>
 <% } %>
 
+<!-- Custom Head -->
+<% if (site.data.head) { %>
+  <% for (var i in site.data.head) { %>
+    <%- site.data.head[i] %>
+  <% } %>
+<% } %>
+
 <style>
   <%- fa_css() %>
 </style>
