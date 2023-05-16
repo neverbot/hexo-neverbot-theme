@@ -288,4 +288,25 @@
   
   & a.next:hover 
     transform: translateX(4px)
-  
+
+.miniblog-post
+  border: solid 1px $font-secondary-color;
+  border-radius: 5px;
+  padding: 0 20px;
+
+  .miniblog-link
+    font-size: 1.2em;
+    line-height: 1.5em;
+    text-decoration: underline;
+    font-weight: bold;
+    position: relative;
+
+  .miniblog-link::before
+    content: "#";
+    color: $post-link-hover-color;
+    font-size: 5em;
+    display: block;
+    position: absolute;
+    left: -90px;
+    top: 31px;
+    opacity: 0.3;

@@ -4,7 +4,7 @@
     <% var show_posts = page.posts.sort(field_sort, 'desc').limit(theme.archive.post_per_page || 5) %>
 
     <% show_posts.each(function(post) { %>
-      <%- partial('_partial/post-minimal', { post: post }) %>
+      <%- partial('_partial/archive-list-post', { post: post }) %>
     <% }); %>
   </div>
 
