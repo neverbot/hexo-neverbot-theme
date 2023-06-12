@@ -8,7 +8,7 @@
 <%# video %>
 <%# if (is_post() && page.video) { %>
 <script>
-  const player = new Plyr('#player', {
+  const players = Array.from(document.querySelectorAll('.js-player')).map((p) => new Plyr(p, {
     disableContextMenu: 0,
     youtube: {
       noCookie: 1,
@@ -16,6 +16,16 @@
       showinfo: 0,
       controls: 0,
     }
-  });
+  }));
+
+  // const player = new Plyr('#player', {
+  //   disableContextMenu: 0,
+  //   youtube: {
+  //     noCookie: 1,
+  //     modestbranding: 1,
+  //     showinfo: 0,
+  //     controls: 0,
+  //   }
+  // });
 </script>
 <%# } %>
