@@ -2,14 +2,14 @@ hexo.extend.tag.register('year', function (args, content) {
   const [left, up, right, last] = args
 
   return '<div class="timeline-node">' +
-          '<div class="timeline-version">' + up + '</div>' +
+          '<div class="timeline-line"></div>' +
+          '<div class="timeline-over">' + up + '</div>' +
+          (left.trim().length ? '<div class="timeline-time">' + left + '</div>' : '') +
+          '<div class="timeline-circle"></div>' +
           '<div class="timeline-body">' +
-            (left.trim().length ? '<div class="timeline-time">' + left + '</div>' : '') +
-            (!last ? '<div class="timeline-line"></div>' : '') +
-            '<div class="timeline-circle"></div>' +
             '<div class="timeline-title">' + hexo.render.renderSync({ text: right, engine: 'markdown' }) + '</div>' +
+            '<div class="timeline-content">' + hexo.render.renderSync({ text: content, engine: 'markdown' }) + '</div>' +
           '</div>' +
-          '<div>' + hexo.render.renderSync({ text: content, engine: 'markdown' }) + '</div>' +
         '</div>'
 }, { ends: true, async: false })
 
