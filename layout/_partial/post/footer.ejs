@@ -10,6 +10,7 @@
     <% } %>
   </div>
 
+  <% if (is_post()) { %>
   <%- partial('_partial/post/related', { post: post }) %>
-
+  <% } %>
 </section>
