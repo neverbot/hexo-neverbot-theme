@@ -20,10 +20,6 @@
   float: left
   width: 100%
 
-.timeline-over 
-  font-size: 1.25rem
-  color: #a9a9b3
-  
 .timeline-body 
   align-items: center
   display: flex
@@ -66,8 +62,8 @@
   --transform-scale-x: 1
   --transform-scale-y: 1
   transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y))
-  --transform-translate-x: -50%
-  // --transform-translate-y: 0.75rem
+  --transform-translate-x: 0%;
+  --transform-translate-y: 0.75em;
 
 .timeline-circle 
   position: absolute
@@ -90,3 +86,15 @@
   
   p
     margin: 0
+
+.timeline-subtitle 
+  font-size: 1.25rem
+  color: #a9a9b3
+  margin-bottom: 10px
+  
+  p
+    margin: 0
+    
+.timeline .last .timeline-line
+  display: none
+
