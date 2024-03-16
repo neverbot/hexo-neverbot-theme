@@ -6,7 +6,7 @@
       <span class="tag" title="Ver más contenido relacionado">
       <a href="<%- url_for(item.path) %>">#<%- item.name %></a></span><%- (i < post.tags.length - 1) ? ',' : '' %>
     <% }) %>
-    | <span class="permalink" title="Permalink"><a href="<%- post.permalink %>">&para;</a></span>
+    | <span class="permalink" title="Permalink"><a href="<%- url_for(post.path) %>">&para;</a></span>
     <% } %>
   </div>
 
