@@ -1,25 +1,21 @@
-<div class="post-related">
-  Otras entradas que podrían estar relacionadas, o no:
-
-  <% if (page.related_posts && page.related_posts.length > 0) { %>
-    <section class="related-posts">
-      <ul>
-      <%
-      for (const path of page.related_posts) {
-        var posts = site.posts.filter(function(post) {
-          return post.path === path;
+<% if (page.related_posts && page.related_posts.length > 0) { %>
+  <section class="related-posts">
+    Otras entradas que podrían estar relacionadas, o no:
+    <ul>
+    <%
+    for (const path of page.related_posts) {
+      var posts = site.posts.filter(function(post) {
+        return post.path === path;
+      });
+      if (posts && posts.length > 0) {
+        posts.each(function(apost) {
+    %>
+        <li><a href="<%- url_for(apost.path) %>"><%= apost.title || '(sin título)' %></a></li>
+    <%
         });
-        if (posts && posts.length > 0) {
-          posts.each(function(apost) {
-      %>
-          <li><a href="<%- url_for(apost.path) %>"><%= apost.title || '(sin título)' %></a></li>
-      <%
-          });
-        }
       }
-      %>
-      </ul>
-    </section>
-  <% } %>
-
-</div>
+    }
+    %>
+    </ul>
+  </section>
+<% } %>
