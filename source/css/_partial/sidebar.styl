@@ -1,0 +1,27 @@
+
+.sidebar
+  width: 25%
+  border-left 1px solid $post-link-color-with-opacity
+  padding-left 25px
+  margin-left 30px
+  
+  .post
+    margin 0
+    padding 0
+
+    .post-content 
+      h1::before,h2::before,h3::before
+        content none
+      h1,h2,h3
+        color $post-link-color
+      img
+        margin 20px auto 0
+      p
+        text-align center
+      ul
+        list-style-type none
+        padding 0
+  
+  h3
+    margin-top 0px !important
+    color $post-link-color-with-opacity !important
