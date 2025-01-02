@@ -16,6 +16,11 @@
         color $post-link-color
       img
         margin 20px auto 0
+        // add transparency by default, but remove it when hovering
+        opacity 0.5
+        transition opacity .5s ease, transform .5s ease
+        &:hover
+          opacity 1
       p
         text-align center
       ul
