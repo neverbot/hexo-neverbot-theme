@@ -30,6 +30,8 @@ if (is_archive()) {
 <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
 <% } %>
 
+<%- autoCanonical(config, page) %>
+
 <%# css list %>
 <% if (theme.stylesheets !== undefined && theme.stylesheets.length > 0) { %>
 <!-- stylesheets list from _config.yml -->
