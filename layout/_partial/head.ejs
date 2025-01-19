@@ -30,6 +30,9 @@ if (is_archive()) {
 <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
 <% } %>
 
+<% if (is_archive() || is_tag()) { %>
+<meta name="robots" content="noindex">
+<% } %>
 <%- autoCanonical(config, page) %>
 <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
