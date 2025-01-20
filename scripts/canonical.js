@@ -11,8 +11,11 @@
 // });
 
 hexo.extend.helper.register('autoCanonical', function (config, page) {
-  var base_url = config.url;
-  if (config.url.charAt(config.url.length - 1) !== '/') base_url += '/';
+  let base_url = config.url;
+
+  // add slash to the base url, except in the home (root dir)
+  if (base_url.charAt(base_url.length - 1) !== '/' && page.canonical_path != 'index.html')
+    base_url += '/';
 
   return (
     '<link rel="canonical" href="' +
