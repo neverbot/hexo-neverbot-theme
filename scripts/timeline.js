@@ -16,5 +16,7 @@ hexo.extend.tag.register('year', function (args, content) {
 }, { ends: true, async: false })
 
 hexo.extend.tag.register('timeline', function (args, content) {
-  return '<div class="timeline">' + hexo.render.renderSync({ text: content, engine: 'markdown' }) + '</div>'
+  const [classes] = args
+
+  return '<div class="timeline' + (classes ? ' ' + classes : '') + '">' + hexo.render.renderSync({ text: content, engine: 'markdown' }) + '</div>'
 }, { ends: true, async: false })
