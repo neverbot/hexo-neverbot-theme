@@ -10,7 +10,6 @@
 //   );
 // });
 
-// eslint-disable-next-line no-undef
 hexo.extend.helper.register('autoCanonical', function (config, page) {
   let base_url = config.url;
 
