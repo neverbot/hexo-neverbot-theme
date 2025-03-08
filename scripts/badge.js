@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 hexo.extend.tag.register(
   'badge',
   function (args) {

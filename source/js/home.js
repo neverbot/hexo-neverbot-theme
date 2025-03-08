@@ -26,7 +26,7 @@
     // removing characters
     if (currentMessageAction === 0) {
       if (showing.length <= 0) {
-        random = Math.floor(Math.random() * textMessages.length);
+        let random = Math.floor(Math.random() * textMessages.length);
         currentMessage = textMessages[random];
         currentMessageAction = 1;
         setTimeout(typer, 1000);
