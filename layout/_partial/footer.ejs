@@ -3,7 +3,46 @@
         <pre>┌( ಠ_ಠ)┘</pre>
         <pre>4 8 15 16 23 42</pre>
     </div>
+    <button id="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">
+        <span class="theme-icon-light"><%- fa_inline('moon', { prefix: 'fas' }) %></span>
+        <span class="theme-icon-dark"><%- fa_inline('sun', { prefix: 'fas' }) %></span>
+    </button>
 </footer>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('theme-toggle');
+    var html = document.documentElement;
+
+    function getStoredTheme() {
+      try { return localStorage.getItem('theme'); } catch (e) { return null; }
+    }
+
+    function setTheme(theme) {
+      html.setAttribute('data-theme', theme);
+      try { localStorage.setItem('theme', theme); } catch (e) {}
+    }
+
+    // apply stored preference on load
+    var stored = getStoredTheme();
+    if (stored) {
+      html.setAttribute('data-theme', stored);
+    }
+
+    toggle.addEventListener('click', function () {
+      var current = html.getAttribute('data-theme');
+      if (current === 'dark') {
+        setTheme('light');
+      } else if (current === 'light') {
+        setTheme('dark');
+      } else {
+        // no manual preference — check system
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setTheme(prefersDark ? 'light' : 'dark');
+      }
+    });
+  })();
+</script>
 
 <%# video: load plyr only when there are embedded players in the page %>
 <script>
