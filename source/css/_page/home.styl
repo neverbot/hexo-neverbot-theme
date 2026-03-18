@@ -28,7 +28,7 @@
         bottom: -1px;
 
         span
-          opacity: 0.9;
+          opacity: 1;
 
       &.active
         opacity: 0.8;
@@ -81,7 +81,7 @@
     
   #main 
     border-radius: 9px;
-    border: 1px $font-secondary-color solid;
+    border: 1px $border-color solid;
     height: 13em;
     background: var(--panel-bg);
   
@@ -184,7 +184,14 @@
       margin: 0 auto;
       position: relative;
 
-    h1 
+    h1
       margin: 10px 0 20px 0;
       font-size: 1.8em;
-  
+
+@media (prefers-color-scheme: dark)
+  html:not([data-theme="light"]) .home #nav a:hover
+    opacity: 1
+
+html[data-theme="dark"] .home #nav a:hover
+  opacity: 1
+

@@ -30,3 +30,18 @@
   h3
     margin-top 0px !important
     color $post-link-color-with-opacity !important
+
+@media (prefers-color-scheme: dark)
+  html:not([data-theme="light"]) .sidebar .post-content a
+    color var(--post-link-color)
+    text-decoration none
+    &:hover
+      color #fff
+      text-decoration underline
+
+html[data-theme="dark"] .sidebar .post-content a
+  color var(--post-link-color)
+  text-decoration none
+  &:hover
+    color #fff
+    text-decoration underline

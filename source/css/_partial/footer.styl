@@ -3,3 +3,46 @@
   float: right
   position: relative
   margin-bottom: 4rem
+
+#theme-toggle
+  position: fixed
+  bottom: 1.5rem
+  right: 1.5rem
+  border: none
+  background: none
+  cursor: pointer
+  z-index: 100
+  padding: 0
+
+  svg
+    width: 1.2rem
+    height: 1.2rem
+    color: var(--font-secondary-color)
+    transition: color 0.25s ease-in-out
+
+  &:hover svg
+    color: var(--font-color)
+
+  .theme-icon-dark
+    display: none
+
+html[data-theme="dark"] #theme-toggle
+  svg
+    color: #fff
+  &:hover svg
+    color: #fff
+  .theme-icon-light
+    display: none
+  .theme-icon-dark
+    display: inline
+
+@media (prefers-color-scheme: dark)
+  html:not([data-theme="light"]) #theme-toggle
+    svg
+      color: #fff
+    &:hover svg
+      color: #fff
+    .theme-icon-light
+      display: none
+    .theme-icon-dark
+      display: inline

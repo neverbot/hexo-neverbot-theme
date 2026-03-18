@@ -17,7 +17,7 @@
     display: block;
     position: absolute;
     left: -70px;
-    opacity: 0.3;
+    opacity: var(--post-hash-opacity);
 
   .post-meta, .post-footer
     font-size 1em
@@ -74,6 +74,25 @@
     background url("/images/pen-brushes.svg")
     color $post-link-color-with-marker
 
+  @media (prefers-color-scheme: dark)
+    html:not([data-theme="light"]) &
+      a
+        background none
+        text-decoration underline
+        text-decoration-color #fff
+        text-underline-offset 0.3em
+      a:hover
+        text-decoration none
+
+  html[data-theme="dark"] &
+    a
+      background none
+      text-decoration underline
+      text-decoration-color #fff
+      text-underline-offset 0.3em
+    a:hover
+      text-decoration none
+
   ul
     padding-left 2em
 
@@ -124,7 +143,7 @@
     font-family: $basic-font-family
     color: $global-link-hover-color;
     font-weight: bold;
-    opacity: 0.3;
+    opacity: var(--post-hash-opacity);
     z-index: -1;
     position: absolute;
     left: -30px;
@@ -287,4 +306,4 @@
     position: absolute;
     left: -90px;
     top: 31px;
-    opacity: 0.3;
+    opacity: var(--post-hash-opacity);

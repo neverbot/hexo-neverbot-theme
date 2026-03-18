@@ -8,8 +8,9 @@
   --link-hover-color #ff6699
   --navbar-active-color #161209
   --post-link-color #ff6699
-  --post-link-color-opacity #ff669999
+  --post-link-color-opacity #ff6699
   --post-link-hover-color #ff276f
+  --post-hash-opacity 0.3
   --post-link-marker-color #0d0d0d
   --post-link-marker-hover-color ffe5ee
   --pagination-link-color #2d96bd
@@ -36,6 +37,57 @@
   --timeline-date-color #a9a9b3
   --error-border-color #a7a7a7
   --header-background url("/images/background-header.gif")
+  --header-filter none
+  --header-min-height 270px
+
+/** Dark theme values — applied by system preference or manual toggle **/
+
+dark-theme()
+  --bg-color #2a2a2a
+  --font-color #e0e0e0
+  --font-secondary-color #a0a0a0
+  --link-color #e0e0e0
+  --link-hover-color #ff7daa
+  --navbar-active-color #e0e0e0
+  --post-link-color #ff7daa
+  --post-link-color-opacity #ff7daa
+  --post-link-hover-color #ff7daa
+  --post-link-marker-color #e0e0e0
+  --post-link-marker-hover-color 3d2030
+  --post-hash-opacity 1
+  --pagination-link-color #5bb8d4
+  --pagination-link-active-color #e0e0e0
+  --border-color #333
+  --code-font-color #e8758b
+  --code-bg-color #2a2520
+  --table-header-bg #3d2030
+  --panel-bg #333
+  --panel-text-color #d0d0d0
+  --tooltip-bg #e0e0e0
+  --tooltip-color #1a1a1a
+  --paginator-color #666
+  --caption-border-color #444
+  --caption-text-color #888
+  --scrollbar-color #444
+  --gutter-color #555
+  --toc-link-color #888
+  --timeline-border-color #333
+  --timeline-badge-color #e0e0e0
+  --timeline-badge-bg #333
+  --timeline-line-color #e0e0e0
+  --timeline-circle-bg #2a2a2a
+  --timeline-date-color #888
+  --error-border-color #555
+  --header-background none
+  --header-filter none
+  --header-min-height 80px
+
+@media (prefers-color-scheme: dark)
+  html:not([data-theme="light"])
+    dark-theme()
+
+html[data-theme="dark"]
+  dark-theme()
 
 /** Stylus variables mapped to custom properties **/
 
