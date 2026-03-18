@@ -19,9 +19,6 @@
     left: -70px;
     opacity: 0.3;
 
-  .post-footer    
-    // margin-top: 30px
-
   .post-meta, .post-footer
     font-size 1em
     color $font-secondary-color
@@ -35,21 +32,14 @@
         text-decoration: none;
         
 .post-content
-  // padding-top 2rem
   font-size 1.1em
   line-height: 1.5em;
-  // text-align justify
   margin-bottom: 1em;
 
   overflow-wrap: break-word;
   word-wrap: break-word;
 
-  -ms-word-break: break-all;
   word-break: break-word;
-
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
   hyphens: auto;
 
   h2,
@@ -60,8 +50,6 @@
     font-size 1.1em
     margin-top 1.2em
     margin-bottom 1em
-    // padding-top .8em
-    // padding-bottom .3em
   h1::before
     content "#"
     margin-right 5px
@@ -83,9 +71,6 @@
     color $post-link-hover-color
 
   a
-    // brush used from svgbox project, copied to local so we do not depend
-    // of third-party cdns
-    // background: url(//s2.svgbox.net/pen-brushes.svg?ic=brush-9&color=$post-link-hover-color-with-marker);
     background url("/images/pen-brushes.svg")
     color $post-link-color-with-marker
 
@@ -120,21 +105,15 @@
     margin: 20px auto;
     border-radius: 9px;
     overflow hidden
-    // for zoom
     transition: transform .5s ease;
 
-  // zoom
-  img:hover 
+  img:hover
     transform: scale(1.05);
 
   blockquote
-    // background: url('/images/quotes.gif') no-repeat top left;
-    // border: none;
     padding 1em 1.2em 1em 1.2em
-    // font-style: italic;
     position: relative;
     font-family: monospace;
-    // font-size: small;
     line-height: 140%;
     font-weight: normal;
     text-align: left;    
@@ -152,15 +131,6 @@
     top: 65px;
     transform: rotate(-17deg);
 
-    // font-size 1rem
-    // display block
-    // margin 1em 0
-    // padding 1em 1.2em 1em 1.2em
-    // position relative
-    // color rgba(#34495e, 0.8)
-    // background-color $post-blockquote-background-color
-    // border-left 2px solid $post-blockquote-border-color
-    // box-shadow 1px 1px 2px rgba(0,0,0,0.125)
     p
       margin 0
     footer
@@ -204,7 +174,7 @@
     background $code-background-color
 
   iframe
-    margin 0 auto !important
+    margin 0 auto
 
   figure.highlight
     margin 1em 0
