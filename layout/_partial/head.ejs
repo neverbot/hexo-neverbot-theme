@@ -30,6 +30,12 @@ if (is_archive()) {
 <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
 <% } %>
 
+<% if (is_archive() || is_tag()) { %>
+<meta name="robots" content="noindex">
+<% } %>
+<%- autoCanonical(config, page) %>
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
 <%# css list %>
 <% if (theme.stylesheets !== undefined && theme.stylesheets.length > 0) { %>
 <!-- stylesheets list from _config.yml -->
@@ -57,7 +63,8 @@ if (is_archive()) {
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
   integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
   crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/home.js"></script>
+<script defer src="<%- url_for('/js/home.js', { ignore: true })%>"></script>
+<script defer src="<%- url_for('/js/sidebar.js', { ignore: true })%>"></script>
 <% } %>
 
 <style>

@@ -1,0 +1,19 @@
+<div class="container">
+    <%# toc %>
+    <% if (theme.page_toc_enable && toc(page.content).length!==0) { %>
+        <%- partial('_partial/toc') %>
+    <% } %>
+
+    <article class="post">
+        <h2 class="post-title"><%- page.title %></h2>
+        <div class="post-content">
+        <%- list_categories(site.categories, { class: 'taxonomy', 
+                                   style: false, 
+                                   separator: ' | ' }) %>
+
+          <% if (site.categories.length == 0) { %>
+          Ahora mismo no se están usando categorías en esta web.
+          <% } %>
+        </div>
+   </article>
+</div>

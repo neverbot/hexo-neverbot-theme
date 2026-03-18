@@ -5,29 +5,35 @@
     </div>
 </footer>
 
-<%# video %>
-<%# if (is_post() && page.video) { %>
+<%# video: load plyr only when there are embedded players in the page %>
 <script>
-  const players = Array.from(document.querySelectorAll('.js-player')).map((p) => new Plyr(p, {
-    disableContextMenu: 0,
-    youtube: {
-      noCookie: 1,
-      modestbranding: 1,
-      showinfo: 0,
-      controls: 0,
-    }
-  }));
+  (function () {
+    var players = document.querySelectorAll('.js-player');
+    if (!players.length) return;
 
-  // const player = new Plyr('#player', {
-  //   disableContextMenu: 0,
-  //   youtube: {
-  //     noCookie: 1,
-  //     modestbranding: 1,
-  //     showinfo: 0,
-  //     controls: 0,
-  //   }
-  // });
+    var version = '<%= theme.plyr.version %>';
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://cdn.plyr.io/' + version + '/plyr.css';
+    document.head.appendChild(link);
+
+    var script = document.createElement('script');
+    script.src = 'https://cdn.plyr.io/' + version + '/plyr.js';
+    script.onload = function () {
+      Array.from(players).map(function (p) {
+        return new Plyr(p, {
+          disableContextMenu: 0,
+          youtube: {
+            noCookie: 1,
+            modestbranding: 1,
+            showinfo: 0,
+            controls: 0,
+          },
+        });
+      });
+    };
+    document.body.appendChild(script);
+  })();
 </script>
-<%# } %>
 
-<%- partial('_partial/statcounter') %>
+<%# partial('_partial/statcounter') %>
