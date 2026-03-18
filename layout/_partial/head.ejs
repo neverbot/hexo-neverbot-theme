@@ -58,11 +58,8 @@ if (is_archive()) {
 <link rel="stylesheet" href="https://cdn.plyr.io/3.8.4/plyr.css" />
 <%# } %>
 
-<%# jquery only in home %>
-<% if (url_for(page.path) == '/index.html'){ %>     
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-  crossorigin="anonymous"></script>
+<%# home scripts (no jquery) %>
+<% if (url_for(page.path) == '/index.html'){ %>
 <script defer src="<%- url_for('/js/home.js', { ignore: true })%>"></script>
 <script defer src="<%- url_for('/js/sidebar.js', { ignore: true })%>"></script>
 <% } %>

@@ -1,4 +1,6 @@
 (function () {
+  'use strict';
+
   const textMessages = [
     'Master Chief Officer',
     'Imaginaut',
@@ -9,77 +11,105 @@
     'Indisciplinado, asocial y perezoso',
     'World Builder',
   ];
+
+  const textAnimated = document.getElementById('text-animated');
   let currentMessage = '';
-  let currentMessageAction = 0; // 0 removing characters, 1 adding characters
+  let currentMessageAction = 0; // 0 removing, 1 adding
 
-  const init = function () {
-    const random = Math.floor(Math.random() * textMessages.length);
-    $('#text-animated').html(textMessages[random]);
-    currentMessage = textMessages[random];
+  function randomMessage() {
+    return textMessages[Math.floor(Math.random() * textMessages.length)];
+  }
 
-    window.setTimeout(typer, 3000);
-  };
+  function randomDelay() {
+    return 50 + Math.floor(Math.random() * 150);
+  }
 
-  const typer = function () {
-    let showing = $('#text-animated').html();
+  function typer() {
+    const showing = textAnimated.textContent;
 
-    // removing characters
     if (currentMessageAction === 0) {
+      // removing characters
       if (showing.length <= 0) {
-        let random = Math.floor(Math.random() * textMessages.length);
-        currentMessage = textMessages[random];
+        currentMessage = randomMessage();
         currentMessageAction = 1;
         setTimeout(typer, 1000);
       } else {
-        showing = showing.substring(0, showing.length - 1);
-        $('#text-animated').html(showing);
-        setTimeout(typer, 50 + Math.floor(Math.random() * 150));
+        textAnimated.textContent = showing.substring(0, showing.length - 1);
+        setTimeout(typer, randomDelay());
       }
-    }
-    // adding characters
-    else {
+    } else {
+      // adding characters
       if (showing.length < currentMessage.length) {
-        showing = currentMessage.substring(0, showing.length + 1);
-        $('#text-animated').html(showing);
-        setTimeout(typer, 50 + Math.floor(Math.random() * 150));
+        textAnimated.textContent = currentMessage.substring(0, showing.length + 1);
+        setTimeout(typer, randomDelay());
       } else {
         currentMessageAction = 0;
         setTimeout(typer, 3000);
       }
     }
-  };
+  }
 
-  $(window).on('load', function () {
-    init();
-
-    $('.icon').on('click', function (event) {
-      // ignore current panel
-      if ($(this).hasClass('active') === true) {
-        return;
-      }
-
-      const origin = $(this);
-
-      // select the panel with the same data-key
-      const panel = $('.panel').filter(function () {
-        return $(this).data('key') == origin.data('key');
+  function fadeOut(el) {
+    return new Promise(function (resolve) {
+      el.style.transition = 'opacity 250ms';
+      el.style.opacity = '0';
+      el.addEventListener('transitionend', function handler() {
+        el.removeEventListener('transitionend', handler);
+        el.style.display = 'none';
+        resolve();
       });
+    });
+  }
 
-      // if there is a destination panel
-      if (panel.length > 0) {
-        event.preventDefault();
+  function fadeIn(el) {
+    el.style.opacity = '0';
+    el.style.display = '';
+    // force reflow before transitioning
+    void el.offsetHeight;
+    el.style.transition = 'opacity 250ms';
+    el.style.opacity = '1';
+  }
 
-        // hide active panel
-        $('.panel.active').fadeOut(250, function () {
-          // show the panel with the same data-key
-          panel.fadeIn(250);
+  function initPanelNavigation() {
+    const icons = document.querySelectorAll('.icon[data-key]');
+    const panels = document.querySelectorAll('.panel');
+
+    icons.forEach(function (icon) {
+      icon.addEventListener('click', function (event) {
+        if (icon.classList.contains('active')) return;
+
+        const key = icon.dataset.key;
+        const target = Array.from(panels).find(function (p) {
+          return p.dataset.key === key;
         });
 
-        $('.icon.active').removeClass('active');
-        $('.panel.active').removeClass('active');
-        panel.addClass('active');
-        $(this).addClass('active');
-      }
+        if (!target) return;
+        event.preventDefault();
+
+        const activePanel = document.querySelector('.panel.active');
+        const activeIcon = document.querySelector('.icon.active');
+
+        if (activePanel) {
+          fadeOut(activePanel).then(function () {
+            activePanel.classList.remove('active');
+            target.classList.add('active');
+            fadeIn(target);
+          });
+        } else {
+          target.classList.add('active');
+          fadeIn(target);
+        }
+
+        if (activeIcon) activeIcon.classList.remove('active');
+        icon.classList.add('active');
+      });
     });
+  }
+
+  window.addEventListener('load', function () {
+    currentMessage = randomMessage();
+    textAnimated.textContent = currentMessage;
+    setTimeout(typer, 3000);
+    initPanelNavigation();
   });
 })();
