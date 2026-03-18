@@ -6,7 +6,7 @@
   align-items: baseline;
   
 .timeline * 
-  border: 0 solid #e2e8f0
+  border: 0 solid var(--timeline-border-color)
   line-height: 1.5
   
   p
@@ -40,8 +40,8 @@
   padding-bottom: .25rem
   padding-left: .75rem
   padding-right: .75rem
-  color: #2d1b2e
-  background-color: #e1e1e1
+  color: var(--timeline-badge-color)
+  background-color: var(--timeline-badge-bg)
   border-radius: 9999px
   width: 4.9rem
   white-space: nowrap
@@ -57,7 +57,7 @@
   height: 100%
   padding-left: 1px
   padding-right: 1px
-  background-color: #161209
+  background-color: var(--timeline-line-color)
   margin-left: 5.45rem
   align-self: flex-start
   --transform-rotate: 0
@@ -78,12 +78,12 @@
   box-sizing: content-box
   border-width: 4px
   border-radius: 9999px
-  border-color: #161209
-  background-color: #fff
+  border-color: var(--timeline-line-color)
+  background-color: var(--timeline-circle-bg)
   margin-top: 9px
 
 .timeline-title 
-  color: #161209
+  color: var(--font-color)
   font-size: 1.5rem
   line-height: 1.375
   font-weight: normal
@@ -93,7 +93,7 @@
 
 .timeline-subtitle 
   font-size: 1.25rem
-  color: #a9a9b3
+  color: var(--timeline-date-color)
   margin-bottom: 10px
   
   p

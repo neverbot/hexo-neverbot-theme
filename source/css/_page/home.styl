@@ -40,7 +40,7 @@
         display: inline-block;
         position: absolute;
         background: $font-color;
-        color: #ffffff;
+        color: var(--tooltip-color);
         top: -2.5em;
         left: -10px;
         opacity: 0;
@@ -83,7 +83,7 @@
     border-radius: 9px;
     border: 1px $font-secondary-color solid;
     height: 13em;
-    background: #ffffff;
+    background: var(--panel-bg);
   
     .panel 
       padding: 1em;
@@ -104,7 +104,7 @@
 
         strong, b, h1, h2, h3, h4, h5, h6 
           font-weight: 400;
-          color: #363636;
+          color: var(--panel-text-color);
         
         h1
           font-family: indie-flower
