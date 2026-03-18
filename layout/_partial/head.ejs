@@ -48,14 +48,14 @@ if (is_archive()) {
 
 <%# video %>
 <%# if (is_post() && page.video) { %>
-<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+<script src="https://cdn.plyr.io/3.8.4/plyr.js"></script>
+<link rel="stylesheet" href="https://cdn.plyr.io/3.8.4/plyr.css" />
 <%# } %>
 
 <%# jquery only in home %>
 <% if (url_for(page.path) == '/index.html'){ %>     
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" 
-  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
   crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/home.js"></script>
 <% } %>
