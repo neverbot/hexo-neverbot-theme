@@ -8,18 +8,16 @@
 </div>
 
 <script>
-    document.ready(
-        function () {
-            tocbot.init({
-                tocSelector: '.tocbot-list',
-                contentSelector: '.post-content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 6,
-                orderedList: false,
-                scrollSmooth: true,
-            })
-        }
-    )
+    document.addEventListener('DOMContentLoaded', function () {
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+    });
 
     function go_top() {
         window.scrollTo(0, 0);
