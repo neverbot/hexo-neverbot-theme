@@ -14,32 +14,29 @@
       width: 80px;
       opacity: 0.35;
       outline: 0;
-      -moz-transition: opacity .25s ease-in-out;
-      -webkit-transition: opacity .25s ease-in-out;
-      -ms-transition: opacity .25s ease-in-out;
       transition: opacity .25s ease-in-out;
       position: relative;
       display: inline-block;
       text-align: center;
       cursor: default;
 
-      &:before 
+      &:before
         font-size: 0.8em;
 
-      &:hover 
+      &:hover
         opacity: 0.8;
         bottom: -1px;
 
-        span 
-          opacity: 0.9;   
+        span
+          opacity: 0.9;
 
-      &.active 
+      &.active
         opacity: 0.8;
 
-      &.active:after 
+      &.active:after
         border-bottom-width: 10px;
 
-      span 
+      span
         display: inline-block;
         position: absolute;
         background: $font-color;
@@ -47,9 +44,6 @@
         top: -2.5em;
         left: -10px;
         opacity: 0;
-        -moz-transition: opacity .25s ease-in-out;
-        -webkit-transition: opacity .25s ease-in-out;
-        -ms-transition: opacity .25s ease-in-out;
         transition: opacity .25s ease-in-out;
         width: 100px;
         border-radius: 9px;
@@ -73,13 +67,11 @@
         text-decoration: none;
         font-size: 2em;
 
-        &:before 
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
+        &:before
           font-family: 'Font Awesome 5 Free';
           font-style: normal;
           font-weight: normal;
-          text-transform: none !important;
+          text-transform: none;
         
         & > .label 
           display: none;
@@ -97,9 +89,6 @@
       padding: 1em;
       width: 100%;
       height: 100%;    
-      -moz-transition: visibility 0s linear 0.5s;
-      -webkit-transition: visibility 0s linear 0.5s;
-      -ms-transition: visibility 0s linear 0.5s;
       transition: visibility 0s linear 0.5s;
     
       .text
@@ -148,21 +137,9 @@
           position: relative;
           top: -0.05em;
           opacity: 1;
-          -webkit-animation: blink 0.7s infinite;
-          -moz-animation: blink 0.7s infinite;
           animation: blink 0.7s infinite;
-        
+
           @keyframes blink {
-            0% { opacity:1; }
-            50% { opacity:0; }
-            100% { opacity:1; }
-          }
-          @-webkit-keyframes blink {
-            0% { opacity:1; }
-            50% { opacity:0; }
-            100% { opacity:1; }
-          }
-          @-moz-keyframes blink {
             0% { opacity:1; }
             50% { opacity:0; }
             100% { opacity:1; }
