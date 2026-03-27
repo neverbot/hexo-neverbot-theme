@@ -5,7 +5,17 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <% if (config.author) { %><meta name="author" content="<%- config.author %>"><% } %>
 <% if (config.subtitle) { %><meta name="subtitle" content="<%- config.subtitle %>"><% } %>
-<% if (config.description) { %><meta name="description" content="<%- config.description %>"><% } %>
+<%
+var description = '';
+if (is_post() || is_page()) {
+  description = strip_html(page.excerpt || page.content || '').replace(/\\/g, '').replace(/\s+/g, ' ').substring(0, 200).trim();
+}
+if (!description && config.description) {
+  description = config.description;
+}
+if (description) { %>
+<meta name="description" content="<%- description.replace(/"/g, '&quot;') %>">
+<% } %>
 <% if (config.keywords) { %><meta name="keywords" content="<%- config.keywords %>"><% } %>
 <%
 var title = page.title;
@@ -36,6 +46,35 @@ if (is_archive()) {
 <% } %>
 <%- autoCanonical(config, page) %>
 <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+<%# Open Graph %>
+<%
+var ogImage = '';
+if (is_post() || is_page()) {
+  var imgMatch = (page.content || '').match(/<img[^>]+src=["']([^"']+)["']/);
+  if (imgMatch) {
+    ogImage = imgMatch[1];
+    if (ogImage.startsWith('http')) {
+      // already absolute
+    } else if (ogImage.startsWith('/')) {
+      ogImage = config.url + ogImage;
+    } else {
+      // relative path — resolve against page permalink
+      var basePath = url_for(page.path).replace(/[^/]*$/, '');
+      ogImage = config.url + basePath + ogImage.replace(/^\.\//, '');
+    }
+  }
+}
+if (!ogImage) ogImage = config.url + '/icons/apple-touch-icon.png';
+%>
+<meta property="og:type" content="<%= is_post() ? 'article' : 'website' %>">
+<meta property="og:title" content="<%= title ? config.title + ' | ' + title : config.title %>">
+<% if (description) { %>
+<meta property="og:description" content="<%- description.replace(/"/g, '&quot;') %>">
+<% } %>
+<meta property="og:url" content="<%- page.permalink || config.url %>">
+<meta property="og:site_name" content="<%= config.title %>">
+<meta property="og:image" content="<%- ogImage %>">
 
 <%# css list %>
 <% if (theme.stylesheets !== undefined && theme.stylesheets.length > 0) { %>
