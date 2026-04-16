@@ -104,6 +104,36 @@ if (!ogImage) ogImage = config.url + '/icons/apple-touch-icon.png';
 <script defer src="<%- url_for('/js/sidebar.js', { ignore: true })%>"></script>
 <% } %>
 
+<%# JSON-LD structured data %>
+<% if (is_post()) { %>
+<script type="application/ld+json">
+<%- JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": page.title,
+  "url": page.permalink,
+  "datePublished": page.date ? page.date.toISOString() : undefined,
+  "dateModified": page.updated ? page.updated.toISOString() : undefined,
+  "author": { "@type": "Person", "name": config.author },
+  "description": description || undefined,
+  "publisher": {
+    "@type": "Organization",
+    "name": config.title
+  }
+}) %>
+</script>
+<% } else if (is_home()) { %>
+<script type="application/ld+json">
+<%- JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": config.title,
+  "url": config.url,
+  "description": config.description || undefined
+}) %>
+</script>
+<% } %>
+
 <style>
   <%- fa_css() %>
 </style>
