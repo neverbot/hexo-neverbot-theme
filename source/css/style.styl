@@ -35,3 +35,12 @@
 // others
 @import "_timeline/timeline.styl"
 @import "_badge/badge.styl"
+
+// cross-fade between pages where the browser supports it
+@css {
+  @media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+      navigation: auto;
+    }
+  }
+}
