@@ -13,6 +13,7 @@
   ];
 
   const textAnimated = document.getElementById('text-animated');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let currentMessage = '';
   let currentMessageAction = 0; // 0 removing, 1 adding
 
@@ -51,17 +52,36 @@
 
   function fadeOut(el) {
     return new Promise(function (resolve) {
-      el.style.transition = 'opacity 250ms';
-      el.style.opacity = '0';
-      el.addEventListener('transitionend', function handler() {
-        el.removeEventListener('transitionend', handler);
+      let done = false;
+
+      function finish() {
+        if (done) return;
+        done = true;
+        el.removeEventListener('transitionend', finish);
         el.style.display = 'none';
         resolve();
-      });
+      }
+
+      if (reducedMotion.matches) {
+        finish();
+        return;
+      }
+
+      el.style.transition = 'opacity 250ms';
+      el.style.opacity = '0';
+      el.addEventListener('transitionend', finish);
+      // transitionend never fires if the transition is cancelled or disabled
+      setTimeout(finish, 400);
     });
   }
 
   function fadeIn(el) {
+    if (reducedMotion.matches) {
+      el.style.transition = '';
+      el.style.opacity = '';
+      el.style.display = '';
+      return;
+    }
     el.style.opacity = '0';
     el.style.display = '';
     // force reflow before transitioning
@@ -106,10 +126,10 @@
     });
   }
 
-  window.addEventListener('load', function () {
-    currentMessage = randomMessage();
-    textAnimated.textContent = currentMessage;
+  initPanelNavigation();
+
+  if (textAnimated && !reducedMotion.matches) {
+    currentMessage = textAnimated.textContent;
     setTimeout(typer, 3000);
-    initPanelNavigation();
-  });
+  }
 })();
