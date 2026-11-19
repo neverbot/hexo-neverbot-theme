@@ -3,9 +3,7 @@
 <script>(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);document.querySelector('meta[name="color-scheme"]').content=t}}catch(e){}})()</script>
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <% if (config.author) { %><meta name="author" content="<%- config.author %>"><% } %>
-<% if (config.subtitle) { %><meta name="subtitle" content="<%- config.subtitle %>"><% } %>
 <%
 var description = '';
 if (is_post() || is_page()) {
