@@ -1,6 +1,7 @@
 /** CSS Custom Properties for theming **/
 
 :root
+  color-scheme light dark
   --bg-color #fff
   --font-color #383838
   --font-secondary-color #767676
@@ -87,7 +88,11 @@ dark-theme()
     dark-theme()
 
 html[data-theme="dark"]
+  color-scheme dark
   dark-theme()
+
+html[data-theme="light"]
+  color-scheme light
 
 /** Stylus variables mapped to custom properties **/
 

@@ -3,9 +3,9 @@
         <pre>┌( ಠ_ಠ)┘</pre>
         <pre>4 8 15 16 23 42</pre>
     </div>
-    <button id="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">
-        <span class="theme-icon-light"><%- fa_inline('moon', { prefix: 'fas' }) %></span>
-        <span class="theme-icon-dark"><%- fa_inline('sun', { prefix: 'fas' }) %></span>
+    <button id="theme-toggle" type="button">
+        <span class="theme-icon-light"><%- fa_inline('moon', { prefix: 'fas' }) %><span class="visually-hidden">Cambiar a modo oscuro</span></span>
+        <span class="theme-icon-dark"><%- fa_inline('sun', { prefix: 'fas' }) %><span class="visually-hidden">Cambiar a modo claro</span></span>
     </button>
 </footer>
 
@@ -13,33 +13,40 @@
   (function () {
     var toggle = document.getElementById('theme-toggle');
     var html = document.documentElement;
+    var meta = document.querySelector('meta[name="color-scheme"]');
+    var system = window.matchMedia('(prefers-color-scheme: dark)');
 
-    function getStoredTheme() {
-      try { return localStorage.getItem('theme'); } catch (e) { return null; }
+    function systemTheme() {
+      return system.matches ? 'dark' : 'light';
     }
 
-    function setTheme(theme) {
-      html.setAttribute('data-theme', theme);
-      try { localStorage.setItem('theme', theme); } catch (e) {}
-    }
-
-    // apply stored preference on load
-    var stored = getStoredTheme();
-    if (stored) {
-      html.setAttribute('data-theme', stored);
+    function show(theme) {
+      if (theme) {
+        html.setAttribute('data-theme', theme);
+      } else {
+        html.removeAttribute('data-theme');
+      }
+      if (meta) meta.content = theme || 'light dark';
     }
 
     toggle.addEventListener('click', function () {
-      var current = html.getAttribute('data-theme');
-      if (current === 'dark') {
-        setTheme('light');
-      } else if (current === 'light') {
-        setTheme('dark');
-      } else {
-        // no manual preference — check system
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        setTheme(prefersDark ? 'light' : 'dark');
-      }
+      var current = html.getAttribute('data-theme') || systemTheme();
+      var target = current === 'dark' ? 'light' : 'dark';
+      var override = target === systemTheme() ? null : target;
+      show(override);
+      try {
+        if (override) {
+          localStorage.setItem('theme', override);
+        } else {
+          localStorage.removeItem('theme');
+        }
+      } catch (e) {}
+    });
+
+    window.addEventListener('storage', function (event) {
+      if (event.key !== 'theme') return;
+      var value = event.newValue;
+      show(value === 'light' || value === 'dark' ? value : null);
     });
   })();
 </script>
