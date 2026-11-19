@@ -92,12 +92,6 @@ if (!ogImage) ogImage = config.url + '/icons/apple-touch-icon.png';
 <% }); %>
 <% } %>
 
-<%# video %>
-<%# if (is_post() && page.video) { %>
-<script src="https://cdn.plyr.io/3.8.4/plyr.js"></script>
-<link rel="stylesheet" href="https://cdn.plyr.io/3.8.4/plyr.css" />
-<%# } %>
-
 <%# home scripts (no jquery) %>
 <% if (url_for(page.path) == '/index.html'){ %>
 <script defer src="<%- url_for('/js/home.js', { ignore: true })%>"></script>
