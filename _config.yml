@@ -51,6 +51,7 @@ time_format: HH:mm:ss
 
 # plyr video player
 # https://github.com/sampotts/plyr
+# served from source/vendor/plyr-<version>/, not from cdn.plyr.io
 plyr:
   version: 3.8.4
 

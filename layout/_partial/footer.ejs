@@ -57,17 +57,19 @@
     var players = document.querySelectorAll('.js-player');
     if (!players.length) return;
 
-    var version = '<%= theme.plyr.version %>';
+    var base = '<%- url_for('/vendor/plyr-' + theme.plyr.version + '/') %>';
     var link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'https://cdn.plyr.io/' + version + '/plyr.css';
+    link.href = base + 'plyr.css';
     document.head.appendChild(link);
 
     var script = document.createElement('script');
-    script.src = 'https://cdn.plyr.io/' + version + '/plyr.js';
+    script.src = base + 'plyr.min.js';
     script.onload = function () {
       Array.from(players).map(function (p) {
         return new Plyr(p, {
+          iconUrl: base + 'plyr.svg',
+          blankVideo: base + 'blank.mp4',
           disableContextMenu: 0,
           youtube: {
             noCookie: 1,
