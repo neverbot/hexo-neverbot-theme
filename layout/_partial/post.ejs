@@ -1,5 +1,5 @@
 <article class="post">
   <%- partial('_partial/post/header', { post: post }) %>
-  <%- partial('_partial/post/body', { post: post }) %>
+  <%- partial('_partial/post/body', { post: post, lazy: typeof lazy !== 'undefined' && lazy }) %>
   <%- partial('_partial/post/footer', { post: post }) %>
 </article>

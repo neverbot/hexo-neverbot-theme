@@ -136,3 +136,10 @@ hexo.extend.filter.register(
   },
   20,
 );
+
+// Listings show whole posts one after another, and each one keeps its first
+// image eager. The listing templates pass every post after the first through
+// this helper, so their images are lazy too.
+hexo.extend.helper.register('lazy_images', function (html) {
+  return (html || '').replace(/<img\b(?![^>]*\sloading=)/gi, '<img loading="lazy"');
+});

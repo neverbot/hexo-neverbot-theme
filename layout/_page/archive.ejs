@@ -3,12 +3,12 @@
     <ul class="post-list">
       <% var field_sort = theme.archive.sort_updated ? 'updated' : 'date' %>
       <% var show_posts = page.posts.sort(field_sort, 'desc').limit(theme.archive.post_per_page || 5) %>
-      <% show_posts.each(function(post) { %>
+      <% show_posts.each(function(post, i) { %>
         <% const tags = post.tags.toArray().map((item) => { return item.name; }); %>
         <% if (post.tags && tags.includes('miniblog')) { %>
-          <%- partial('_partial/miniblog-post', { post: post }) %>
+          <%- partial('_partial/miniblog-post', { post: post, lazy: i > 0 }) %>
         <% } else { %>
-          <%- partial('_partial/post', { post: post }) %>
+          <%- partial('_partial/post', { post: post, lazy: i > 0 }) %>
         <% } %>
       <% }); %>
     </ul>
